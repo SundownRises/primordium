@@ -1,22 +1,17 @@
 "use client";
 import { useState } from "react";
-import { ethers } from "ethers";
 import { createThirdwebClient } from "thirdweb";
 import {  ConnectButton } from "thirdweb/react";
 import { createWallet, inAppWallet } from "thirdweb/wallets";
 import { bscTestnet } from "thirdweb/chains";
 import Link from "next/link";
-import Image from "next/image";
 
-const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID;
 const thirdwebKey = process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY;
 
 export default function DynamicNavbar() {
   const client = createThirdwebClient({ clientId, secretKey: thirdwebKey || "" });
   
-  const [account, setAccount] = useState(null);
-  const [wcProvider, setWcProvider] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
   
   const wallets = [

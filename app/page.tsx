@@ -1,8 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider, gql, useQuery } from "@apollo/client";
-import { useActiveAccount } from "thirdweb/react";
 import Image from "next/image";
 import Link from "next/link";
 import Silk from "./components/ui/silk";

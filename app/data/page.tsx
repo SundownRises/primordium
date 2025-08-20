@@ -7,7 +7,13 @@ export default function DataPage() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [uploadResult, setUploadResult] = useState<any>(null);
+  const [uploadResult, setUploadResult] = useState<{
+    rootHash?: string;
+    txHash?: string | { txHash: string; rootHash: string };
+    fileName?: string;
+    address?: string;
+    note?: string;
+  } | null>(null);
 
   const account = useActiveAccount();
   const address = account?.address;
@@ -54,7 +60,7 @@ export default function DataPage() {
     }
   };
 
-  const getTxHashString = (txHash: any) => {
+  const getTxHashString = (txHash: string | { txHash: string; rootHash: string } | undefined) => {
     if (typeof txHash === 'string') {
       return txHash;
     }
@@ -103,7 +109,7 @@ export default function DataPage() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">Connect & Upload</h3>
                 <p className="text-gray-300 leading-relaxed text-sm">
-                  You upload your data by connecting your wallet. Don't worry, we won't ask for any funds, our backend will cover your fees.
+                  You upload your data by connecting your wallet. Don&apos;t worry, we won&apos;t ask for any funds, our backend will cover your fees.
                 </p>
               </div>
 

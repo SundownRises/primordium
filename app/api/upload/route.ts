@@ -57,6 +57,7 @@ export async function POST(request: NextRequest) {
     const rootHash = tree?.rootHash();
 
     // Upload to network
+    // @ts-expect-error - Type compatibility issue between ethers v6 and 0G SDK
     const [tx, uploadErr] = await indexer.upload(zgFile, RPC_URL, signer);
     if (uploadErr !== null) {
       // Check if the error is related to verification but upload was successful
